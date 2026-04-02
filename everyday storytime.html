@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roots & Reads | Everyday Storytime for Kids</title>
+  <link rel="stylesheet" href="everyday storytime.css"> <!-- same CSS for consistency -->
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <img src="Green and light brow.png" alt="Roots & Reads Logo" class="logo">
+    </div>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="community programs.html">Community Programs</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <h1>🌞 Everyday Storytime for Kids</h1>
+    <p>Read Filipino storybooks anytime, every day. Finish a story and earn Roots points!</p>
+    <a href="#stories" class="hero-btn">Start Reading Now</a>
+  </section>
+
+  <!-- Main Program Section -->
+  <main id="stories">
+    <section class="program storytelling">
+      <h2>📖 Story of the Day</h2>
+
+      <!-- Random story will appear here -->
+      <section class="program storytelling">
+  <h2>📖 Story of the Day</h2>
+
+  <!-- Book cover -->
+  <div class="book-cover">
+    <img src="Alamat ni Juan Tamad - Mga Kwentong Bayan.jpg" alt="Book Cover" style="max-width:200px;">
+  </div>
+
+  <!-- PDF link -->
+  <p>
+    <a href="https://akingmaiklingkwento.com/wp-content/uploads/2024/08/Halimbawa_Pabula_Ang_Pabula_ng_Langgam.pdf" target="_blank" class="pdf-link">📂 Open Full Story (PDF)</a>
+  </p>
+
+  <!-- Finish button -->
+  <button class="join-btn" onclick="showQuiz()">I Finished Reading</button>
+</section>
+
+
+    <!-- Quiz Section (hidden at first) -->
+    <section id="quiz-section" style="display:none;">
+      <h2>📝 Quick Quiz</h2>
+      <p id="quiz-question"></p>
+      <div id="quiz-options"></div>
+      <button onclick="checkQuiz()">Submit Answer</button>
+      <p id="quiz-result"></p>
+    </section>
+
+    <!-- Points Display -->
+    <section class="roots-points">
+      <h2>🌱 How to Earn Roots Points</h2>
+      <ul>
+        <li>✔ Finish any story</li>
+        <li>✔ Read daily for bonus points</li>
+        <li>✔ Collect badges for streaks</li>
+      </ul>
+      <p id="points-display">Roots Points: 0</p>
+    </section>
+
+    <section class="progress">
+      <h2>📊 Your Reading Progress</h2>
+      <p>Track your daily streaks and Roots points here.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Roots & Reads | Stories for Every Generation</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Sample stories with quiz questions
+    const stories = [
+      {
+        text: "Once upon a time in the Philippines, Juan discovered a magical carabao...",
+        quiz: {
+          question: "Who discovered the magical carabao?",
+          options: ["Juan", "Maria", "Pedro"],
+          answer:  "Juan"
+        }
+      },
+      {
+        text: "Maria found a hidden garden filled with talking birds...",
+        quiz: {
+          question: "What did Maria find?",
+          options: ["A hidden garden", "A treasure chest", "A mountain"],
+          answer: "A hidden garden"
+        }
+      }
+    ];
+
+    // Pick a random story
+    const randomStory = stories[Math.floor(Math.random() * stories.length)];
+    document.getElementById("story-content").innerHTML = "<p>" + randomStory.text + "</p>";
+
+    // Load saved points
+    let rootsPoints = localStorage.getItem("rootsPoints") 
+                      ? parseInt(localStorage.getItem("rootsPoints")) 
+                      : 0;
+    document.getElementById("points-display").textContent = "Roots Points: " + rootsPoints;
+
+    // Show quiz after finishing story
+    function showQuiz() {
+      document.getElementById("quiz-section").style.display = "block";
+      document.getElementById("quiz-question").textContent = randomStory.quiz.question;
+
+      // Render options
+      let optionsHTML = "";
+      randomStory.quiz.options.forEach(opt => {
+        optionsHTML += `<label><input type="radio" name="quiz" value="${opt}"> ${opt}</label><br>`;
+      });
+      document.getElementById("quiz-options").innerHTML = optionsHTML;
+    }
+
+    // Check quiz answer
+    function checkQuiz() {
+      let answer = document.querySelector('input[name="quiz"]:checked');
+      if (!answer) {
+        document.getElementById("quiz-result").textContent = "Please select an answer!";
+        return;
+      }
+
+      if (answer.value === randomStory.quiz.answer) {
+        rootsPoints += 10; // award points
+        localStorage.setItem("rootsPoints", rootsPoints);
+        document.getElementById("points-display").textContent = "Roots Points: " + rootsPoints;
+        document.getElementById("quiz-result").textContent = "✅ Correct! You earned 10 Roots points.";
+      } else {
+        document.getElementById("quiz-result").textContent = "❌ Oops! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>

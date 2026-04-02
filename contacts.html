@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roots & Reads | Contact Us</title>
+  <link rel="stylesheet" href="contacts.css">
+  <script>
+    // Function to open Gmail with prefilled email
+    function sendGmail() {
+      const name = encodeURIComponent(document.getElementById("name").value);
+      const email = encodeURIComponent(document.getElementById("email").value);
+      const subject = encodeURIComponent(document.getElementById("subject").value);
+      const message = encodeURIComponent(document.getElementById("message").value);
+
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=fercyprietos@gmail.com&su=${subject}&body=${body}`;
+      window.open(gmailUrl, "_blank");
+      return false; // prevent default form submit
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+  <img src="web logo.png" alt="Roots & Reads Logo" class="logo">
+</div>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="community programs.html">Community Programs</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="contacts.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h1>Contact Us</h1>
+    <p>Have questions about our digital library? Send us a message!</p>
+
+    <!-- Contact Form -->
+    <form onsubmit="return sendGmail();">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" required>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject">
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="5" required></textarea>
+
+      <div class="form-buttons">
+        <button type="submit">Send Message</button>
+        <button type="reset">Clear</button>
+      </div>
+    </form>
+
+    <!-- Contact Information -->
+    <h2>Library Contact Information</h2>
+    <table>
+      <tr><th>Library Name</th><td>Roots & Reads Digital Library</td></tr>
+      <tr><th>Email</th><td>rootsandreads@gmail.com</td></tr>
+      <tr><th>Phone</th><td>+63 900 123 4567</td></tr>
+      <tr><th>Location</th><td>Negros Occidental, Philippines</td></tr>
+    </table>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Roots & Reads | Stories for Every Generation</p>
+  </footer>
+
+</body>
+</html>

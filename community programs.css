@@ -1,0 +1,323 @@
+/* General reset */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #fdfcf7; /* parchment tone */
+  background-image: url("web\ bacground.png"); /* fixed filename */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #2e2e2e;
+  line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between; /* nav left, logo right */
+  align-items: center;
+  background-color: #3b5d3b; /* deep green */
+  padding: 0.75rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navigation */
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fdfcf7;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #d9b382; /* warm brown accent */
+}
+
+/* Logo container on top-right */
+.logo-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #2a442a; /* dark green container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 90%;   /* slightly smaller to show green border */
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+/* Programs Section */
+.programs {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.9); /* light parchment overlay */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeInUp 1.2s ease;
+}
+
+.programs h1 {
+  font-size: 2rem;
+  color: #3b5d3b; /* deep green */
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #d9b382; /* warm brown accent */
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.programs p {
+  color: #4a3c2a; /* earthy brown */
+  margin-bottom: 2rem;
+}
+
+/* Program list grid */
+.program-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Individual program card */
+.program {
+  background-color: #fdfcf7; /* parchment tone */
+  border: 2px solid #d9b382;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+}
+
+.program h2 {
+  color: #3b5d3b;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.program p {
+  color: #4a3c2a;
+  font-size: 0.95rem;
+}
+
+/* Program button */
+.program button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: #3b5d3b; /* deep green */
+  color: #fdfcf7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.program button:hover {
+  background: #2a442a; /* darker green */
+  transform: translateY(-2px);
+}
+
+/* Special styling for Roots & Reads program */
+.program.roots-reads {
+  background-color: #fff8f0; /* subtle parchment highlight */
+  border: 2px solid #3b5d3b;
+}
+
+.program.roots-reads h2 {
+  color: #2a442a; /* darker green emphasis */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .programs {
+    padding: 2rem 1rem;
+  }
+
+  .programs h1 {
+    font-size: 1.6rem;
+  }
+
+  .program h2 {
+    font-size: 1.1rem;
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #3b5d3b; /* deep green */
+  color: #fdfcf7;            /* parchment text */
+  margin-top: auto;
+  border-top: 3px solid #d9b382; /* warm brown accent line */
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.15); /* subtle shadow above */
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: #d9b382; /* warm accent for links */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fdfcf7; /* invert on hover */
+}
+
+
+/* Programs Section */
+.programs {
+  padding: 2rem 1.5rem;              /* reduced padding */
+  max-width: 800px;                  /* narrower container */
+  width: 95%;                        /* responsive width */
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.9); /* light parchment overlay */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeInUp 1.2s ease;
+}
+
+.programs h1 {
+  font-size: 1.8rem;                 /* slightly smaller heading */
+  color: #3b5d3b;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #d9b382;
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.programs p {
+  color: #4a3c2a;
+  margin-bottom: 1.5rem;             /* reduced spacing */
+  font-size: 0.95rem;
+}
+
+/* Program list grid */
+.program-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* slightly smaller cards */
+  gap: 1.5rem;                        /* reduced gap */
+}
+
+/* Individual program card */
+.program {
+  background-color: #fdfcf7;
+  border: 2px solid #d9b382;
+  border-radius: 10px;
+  padding: 1.2rem;                    /* reduced padding */
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+}
+
+.program h2 {
+  color: #3b5d3b;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.program p {
+  color: #4a3c2a;
+  font-size: 0.9rem;
+}
+
+/* Program button */
+.program button {
+  margin-top: 0.75rem;
+  padding: 8px 16px;                  /* smaller button */
+  background: #3b5d3b;
+  color: #fdfcf7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.program button:hover {
+  background: #2a442a;
+  transform: translateY(-2px);
+}
+
+/* Special styling for Roots & Reads program */
+.program.roots-reads {
+  background-color: #fff8f0;
+  border: 2px solid #3b5d3b;
+}
+
+.program.roots-reads h2 {
+  color: #2a442a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .programs {
+    padding: 1.5rem 1rem;
+    max-width: 95%;
+  }
+
+  .programs h1 {
+    font-size: 1.5rem;
+  }
+
+  .program h2 {
+    font-size: 1rem;
+  }
+}

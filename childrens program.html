@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roots & Reads | Daily Matching Game</title>
+  <link rel="stylesheet" href="childrens storytime.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <img src="web logo.png" alt="Roots & Reads Library Logo" class="logo">
+    </div>
+    <!-- Hamburger button -->
+    <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+    <!-- Nav bar hidden by default -->
+    <nav aria-label="Main Navigation" id="main-nav" style="display:none;">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="community-programs.html">Community Programs</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="contacts.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>🧩 Daily Word Matching</h1>
+    <p>Answer today’s matching test — tomorrow a new one will unlock!</p>
+  </section>
+
+  <!-- Game -->
+  <main>
+    <section class="game-card" id="game">
+      <h2>Match the Words</h2>
+      <div id="questions"></div>
+      <button onclick="checkAnswers()">Submit Answers</button>
+      <p id="result"></p>
+    </section>
+
+    <!-- Countdown -->
+    <section class="game-card" id="countdown" style="display:none;">
+      <h2>Next Test Unlocks In:</h2>
+      <p id="timer"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Roots & Reads | Stories for Every Generation</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle nav menu visibility
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      const nav = document.getElementById("main-nav");
+      nav.style.display = (nav.style.display === "none" || nav.style.display === "") ? "block" : "none";
+    });
+
+    // Matching game logic
+    const tests = [
+      { filipino: ["bahay", "aklat"], english: ["house","book","tree","fish"], answers: ["house","book"] }, 
+      { filipino: ["puno", "isda"], english: ["house","book","tree","fish"], answers: ["tree","fish"] },   
+      { filipino: ["guro", "bata"], english: ["teacher","child","sun","rain"], answers: ["teacher","child"] }, 
+      { filipino: ["aso", "pusa"], english: ["dog","cat","milk","bread"], answers: ["dog","cat"] }, 
+      { filipino: ["araw", "ulan"], english: ["sun","rain","light","table"], answers: ["sun","rain"] }, 
+      { filipino: ["gatas", "tinapay"], english: ["milk","bread","dog","cat"], answers: ["milk","bread"] }, 
+      { filipino: ["ilaw", "mesa"], english: ["light","table","teacher","child"], answers: ["light","table"] } 
+    ];
+
+    const today = new Date().getDay();
+    const currentTest = tests[today];
+
+    function loadTest() {
+      const container = document.getElementById("questions");
+      container.innerHTML = "";
+      currentTest.filipino.forEach((word, i) => {
+        container.innerHTML += `
+          <div class="question">
+            <p><strong>${word}</strong></p>
+            <select id="q${i}">
+              <option value="">--Choose--</option>
+              ${currentTest.english.map(opt => `<option value="${opt}">${opt}</option>`).join("")}
+            </select>
+          </div>
+        `;
+      });
+    }
+
+    function checkAnswers() {
+      let score = 0;
+      currentTest.filipino.forEach((_, i) => {
+        if (document.getElementById("q" + i).value === currentTest.answers[i]) score++;
+      });
+
+      document.getElementById("result").innerText =
+        "You got " + score + " out of " + currentTest.filipino.length + "! 🎉 Well done!";
+
+      document.getElementById("game").style.display = "none";
+      document.getElementById("countdown").style.display = "block";
+      startCountdown();
+    }
+
+    function startCountdown() {
+      let timeLeft = 24 * 60 * 60; 
+      let timerDisplay = document.getElementById("timer");
+
+      let countdown = setInterval(function() {
+        let hours = Math.floor(timeLeft / 3600);
+        let minutes = Math.floor((timeLeft % 3600) / 60);
+        let seconds = timeLeft % 60;
+
+        timerDisplay.innerText = hours + "h " + minutes + "m " + seconds + "s";
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(countdown);
+          timerDisplay.innerText = "✅ Next test is now available!";
+        }
+      }, 1000);
+    }
+
+    document.addEventListener("DOMContentLoaded", loadTest);
+  </script>
+</body>
+</html>

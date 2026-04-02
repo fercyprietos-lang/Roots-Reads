@@ -1,0 +1,150 @@
+/* General reset */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f9f6f1; /* light brown background */
+  color: #2e2e2e;
+}
+
+/* Header */
+header {
+  background-color: #5a3d2b; /* rich brown */
+  color: #fff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  max-height: 60px;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: #2f6b3f; /* dark green hover */
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(to right, #2f6b3f, #f0e5d8); /* dark green to light brown */
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  color: #5a3d2b;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.hero-btn {
+  background-color: #2f6b3f; /* dark green button */
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.hero-btn:hover {
+  background-color: #1f4728; /* deeper green */
+}
+
+/* Program sections */
+.program {
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border: 2px solid #2f6b3f; /* dark green border */
+  border-radius: 8px;
+}
+
+.program h2 {
+  color: #5a3d2b;
+}
+
+/* Book cover */
+.book-cover img {
+  border: 3px solid #2f6b3f;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.join-btn, button {
+  background-color: #2f6b3f; /* dark green */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.join-btn:hover, button:hover {
+  background-color: #5a3d2b; /* brown hover */
+}
+
+/* Quiz section */
+#quiz-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0e5d8; /* light brown background */
+  border-radius: 8px;
+}
+
+#quiz-result {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Points display */
+.roots-points {
+  background-color: #fff;
+  border: 2px solid #5a3d2b;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.roots-points h2 {
+  color: #5a3d2b;
+}
+
+#points-display {
+  font-size: 1.2em;
+  color: #2f6b3f; /* dark green text */
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #5a3d2b;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
