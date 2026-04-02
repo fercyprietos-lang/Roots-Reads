@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roots & Reads | Local Storybooks & Heritage</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="web-logo.png" alt="Roots & Reads Logo" class="logo">
+    </div>
+
+    <!-- Hamburger button -->
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation (hidden until hamburger is clicked) -->
+    <nav class="main-nav" aria-label="Main Navigation" role="navigation">
+      <ul>
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="community-programs.html" class="nav-link">Community Programs</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="mission.html" class="nav-link">Mission</a></li>
+        <li><a href="contacts.html" class="nav-link">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <h1>Roots & Reads: Stories for Every Generation</h1>
+    <p>Preserving Filipino culture — ensuring our traditions thrive in the digital age.</p>
+    <a href="collection.html" class="hero-btn">Start Reading Today</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Roots & Reads | Stories for Every Generation</p>
+  </footer>
+
+  <!-- JavaScript for hamburger toggle -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.main-nav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
+  </script>
+</body>
+</html>
