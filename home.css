@@ -5,17 +5,22 @@ body {
   background: #fdfcf7 url("Web-Background.PNG") no-repeat center center;
   background-size: cover;
   background-attachment: scroll;
-
   color: #2e2e2e;
+
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Main content wrapper */
+main {
+  flex: 1; /* pushes footer down */
 }
 
 /* Header */
 .site-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  /* logo left, hamburger right */
   align-items: center;
   padding: 0.75rem 1.5rem;
   background-color: #064420; /* dark green header */
@@ -28,6 +33,7 @@ body {
 .logo {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* force logo top left */
 }
 
 .logo img {
@@ -53,7 +59,7 @@ body {
   cursor: pointer;
   background: none;
   border: none;
-  z-index: 1001; /* stays above sidebar */
+  z-index: 1003; /* stays above sidebar */
 }
 
 .hamburger .bar {
@@ -64,24 +70,24 @@ body {
   transition: 0.3s;
 }
 
-/* Sidebar Navigation */
+/* Sidebar Navigation (slides from right) */
 .main-nav {
   position: fixed;
   top: 0;
-  left: -250px; /* hidden off-screen */
+  right: -250px; /* hidden off-screen on the right */
   width: 250px;
   height: 100%;
   background-color: #064420; /* dark green sidebar */
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* shadow on left edge */
   display: flex;
   flex-direction: column;
-  padding-top: 70px; /* space for header */
-  transition: left 0.3s ease;
-  z-index: 1000;
+  padding-top: 90px; /* space for header/hamburger */
+  transition: right 0.3s ease;
+  z-index: 1000; /* below header/hamburger */
 }
 
 .main-nav.active {
-  left: 0; /* slides in */
+  right: 0; /* slides in from the right */
 }
 
 .main-nav ul {
@@ -100,6 +106,10 @@ body {
   text-decoration: none;
   color: #fff; /* white links */
   font-size: 1.2rem;
+}
+
+.nav-link:hover {
+  color: #d4f0d2; /* lighter green hover */
 }
 
 /* Hero section */
@@ -154,4 +164,5 @@ body {
   padding: 1rem;
   background-color: #064420; /* dark green footer */
   color: #fff;               /* white text */
+  margin-top: auto;          /* ensures footer sticks to bottom */
 }
