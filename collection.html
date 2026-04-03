@@ -1,73 +1,235 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roots & Reads | Book Collection</title>
-  <link rel="stylesheet" href="collection.css">
-</head>
-<body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="logo">
-      <img src="Web-Logo.PNG" alt="Roots & Reads Logo">
-    </div>
-    <button class="hamburger" aria-label="Toggle navigation">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
+/* General reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* ensures background covers full height */
+}
 
-  <!-- Sidebar Navigation -->
-  <nav class="main-nav" aria-label="Main Navigation">
-    <ul>
-      <li><a class="nav-link" href="index.html">Home</a></li>
-      <li><a class="nav-link" href="community programs.css">Community Programs</a></li>
-      <li><a class="nav-link" href="services.html">Services</a></li>
-      <li><a class="nav-link" href="mission.html">Mission</a></li>
-      <li><a class="nav-link" href="contacts.html">Contact Us</a></li>
-    </ul>
-  </nav>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #fdfcf7 url("Web-Background.PNG") no-repeat center center fixed;
+  background-size: cover;          /* always fills screen */
+  color: #2e2e2e;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 
-  <!-- Book Collection -->
-  <main class="collection">
-    <h2>Children Storybooks</h2>
-    <div class="grid">
-      <div class="card"><img src="Alamat ng Saging.png" alt=""><h3>Alamat ng Saging</h3><p>Boots S. Agbayani</p><a href="ang-alamat-ng-saging_compress.pdf">Read Now</a></div>
-      <div class="card"><img src="Alamat ni Juan Tamad - Mga Kwentong Bayan.jpg" alt=""><h3>Alamat ni Juan Tamad</h3><p>Manuel Arguilla</p><a href="juan-tamad.pdf">Read Now</a></div>
-      <div class="card"><img src="Ang Leon at ang Daga Book Cover.png" alt=""><h3>Ang Leon at ang Daga</h3><p>Jae Martin De Veyra</p><a href="ang_leon_at_ang_daga.pdf">Read Now</a></div>
-      <div class="card"><img src="Role-Playing (e_g_ Alamat ng Pinya).jpg" alt=""><h3>Alamat ng Pinya</h3><p>Boots S. Agbayani Pastor</p><a href="alamat-ng-pinya.pdf">Read Now</a></div>
-      <div class="card"><img src="Alamat ng Gubat.png" alt=""><h3>Alamat ng Gubat</h3><p>Bob Ong</p><a href="alamat-ng-gubat.pdf">Read Now</a></div>
-      <div class="card"><img src="ANTIPARA NI GITA.png" alt=""><h3>Mahiwagang Antipara ni Gita</h3><p>Willie Awitan & Dhino Geges</p><a href="antipara-gita.pdf">Read Now</a></div>
-      <div class="card"><img src="Sa hardin nina Hana.png" alt=""><h3>Sa Hardin nina Hana</h3><p>Lany Lopez Tranquilan</p><a href="sa-hardin-ni-hana.pdf">Read Now</a></div>
-    </div>
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;  /* logo left, hamburger right */
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255,255,255,0.9); /* visible header bar */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1002;
+}
 
-    <h2>Adult Book Collection</h2>
-    <div class="grid">
-      <div class="card"><img src="Jose Rizal.png" alt=""><h3>Buhay at Mga Ginawa ni Dr. José Rizal</h3><p>José Rizal</p><a href="rizal-buhay.pdf">Read Now</a></div>
-      <div class="card"><img src="El Filibusterismo.jpg" alt=""><h3>El Filibusterismo</h3><p>José Rizal</p><a href="el-filibusterismo.pdf">Read Now</a></div>
-      <div class="card"><img src="history of phillippine press.png" alt=""><h3>History of the Philippine Press</h3><p>Carson Taylor</p><a href="philippine-press.pdf">Read Now</a></div>
-      <div class="card"><img src="Ang Liham ni Dr. Rizal sa mga Kadalagahan sa Malolos, Bulakan.png" alt=""><h3>Liham ni Rizal sa Malolos</h3><p>José Rizal</p><a href="rizal-liham.pdf">Read Now</a></div>
-      <div class="card"><img src="Noli Me Tangere.png" alt=""><h3>Noli Me Tangere</h3><p>José Rizal</p><a href="noli-me-tangere.pdf">Read Now</a></div>
-      <div class="card"><img src="Ibong Adarna.jpg" alt=""><h3>Ibong Adarna</h3><p>José de la Cruz</p><a href="ibong-adarna.pdf">Read Now</a></div>
-      <div class="card"><img src="PAGHAHANAP SA BUNDOK NG IFUGAO.png" alt=""><h3>Paghahanap sa Bundok ng Ifugao</h3><p>José de la Cruz</p><a href="ifugao.pdf">Read Now</a></div>
-    </div>
-  </main>
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+}
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>&copy; 2026 Roots & Reads | Stories for Every Generation</p>
-  </footer>
+.logo img {
+  max-height: 90px;   /* larger logo */
+  width: auto;
+  display: block;
+}
 
-  <!-- JS -->
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      nav.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
+/* Hamburger container */
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2e2e2e; /* dark background for visibility */
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger .bar {
+  width: 28px;  /* slightly bigger bars */
+  height: 3px;
+  background-color: #fff; /* white bars for contrast */
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Sidebar Navigation */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fdfcf7;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.main-nav.active {
+  left: 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin: 1rem 0;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2e2e2e;
+  font-size: 1.2rem;
+}
+
+/* Collection Section */
+.collection {
+  padding: 2rem;
+  max-width: 1200px;   /* keeps grid centered */
+  margin: 0 auto;
+}
+
+.collection h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* always 3 books per row */
+  gap: 1rem;
+}
+
+/* Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 0.75rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  max-width: 100%;
+  height: 160px;       /* consistent image height */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.card a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: #2e2e2e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+  background-color: #444;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.05);
+  margin-top: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 820px) {
+  .collection {
+    padding: 1.5rem;
+  }
+
+  .card img {
+    height: 140px; /* shrink images on tablets */
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+
+  .logo img {
+    max-height: 70px; /* still visible on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .collection {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 0.5rem;
+  }
+
+  .card img {
+    height: 120px; /* smaller images on phones */
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    font-size: 0.75rem;
+  }
+
+  .card a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logo img {
+    max-height: 60px; /* bigger than before, still fits */
+  }
+}
