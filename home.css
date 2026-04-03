@@ -4,12 +4,12 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #fdfcf7 url("Web-Background.PNG") no-repeat center center;
   background-size: cover;
-  background-attachment: scroll; /* avoid fixed for mobile */
+  background-attachment: scroll;
 
   color: #2e2e2e;
   display: flex;
   flex-direction: column;
-  min-height: 100%; /* safer than 100vh on mobile */
+  min-height: 100%;
 }
 
 /* Header */
@@ -26,11 +26,12 @@ body {
 
 /* Hamburger button */
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   cursor: pointer;
   background: none;
   border: none;
+  z-index: 1001; /* stays above sidebar */
 }
 
 .hamburger .bar {
@@ -38,27 +39,45 @@ body {
   height: 3px;
   background-color: #2e2e2e;
   margin: 4px 0;
+  transition: 0.3s;
 }
 
-/* Navigation */
+/* Sidebar Navigation */
 .main-nav {
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden off-screen */
+  width: 250px;
+  height: 100%;
+  background-color: #fdfcf7;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   display: flex;
+  flex-direction: column;
+  padding-top: 70px; /* space for header */
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.main-nav.active {
+  left: 0; /* slides in */
 }
 
 .main-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
 }
 
 .main-nav li {
-  margin: 0 1rem;
+  margin: 1rem 0;
+  text-align: left;
+  padding-left: 1rem;
 }
 
 .nav-link {
   text-decoration: none;
   color: #2e2e2e;
+  font-size: 1.2rem;
 }
 
 /* Hero section */
@@ -77,6 +96,7 @@ body {
   margin-bottom: 2rem;
 }
 
+/* Responsive Hero Button */
 .hero-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -84,6 +104,20 @@ body {
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #444;
+}
+
+@media (max-width: 768px) {
+  .hero-btn {
+    width: 80%;       /* button stretches on small screens */
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
 }
 
 /* Footer */
@@ -91,36 +125,4 @@ body {
   text-align: center;
   padding: 1rem;
   background-color: rgba(0,0,0,0.05);
-}
-
-/* Mobile-specific fallback */
-@media (max-width: 768px) {
-  body {
-    background: #fdfcf7 url("Web-Background.PNG") no-repeat top center;
-    background-size: cover;
-    background-attachment: scroll;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .main-nav {
-    display: none;
-    flex-direction: column;
-    background-color: #fdfcf7;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 200px;
-    border: 1px solid #ccc;
-  }
-
-  .main-nav.active {
-    display: flex;
-  }
-
-  .main-nav li {
-    margin: 1rem 0;
-  }
 }
