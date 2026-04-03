@@ -17,11 +17,33 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #064420; /* dark green header */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1002;
 }
 
+/* Logo styling */
 .logo {
-  max-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 90px;   /* larger logo */
+  width: auto;
+  display: block;
+}
+
+/* Hamburger container */
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #064420; /* dark green container */
+  padding: 0.5rem;
+  border-radius: 6px;
 }
 
 /* Hamburger button */
@@ -35,9 +57,9 @@ body {
 }
 
 .hamburger .bar {
-  width: 25px;
+  width: 28px;
   height: 3px;
-  background-color: #2e2e2e;
+  background-color: #fff; /* white bars for contrast */
   margin: 4px 0;
   transition: 0.3s;
 }
@@ -49,7 +71,7 @@ body {
   left: -250px; /* hidden off-screen */
   width: 250px;
   height: 100%;
-  background-color: #fdfcf7;
+  background-color: #064420; /* dark green sidebar */
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
@@ -76,7 +98,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #2e2e2e;
+  color: #fff; /* white links */
   font-size: 1.2rem;
 }
 
@@ -89,18 +111,20 @@ body {
 .hero h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #064420; /* dark green heading */
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  color: #2e2e2e;
 }
 
 /* Responsive Hero Button */
 .hero-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #2e2e2e;
+  background-color: #064420; /* dark green button */
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -109,7 +133,7 @@ body {
 }
 
 .hero-btn:hover {
-  background-color: #444;
+  background-color: #0b6b3a; /* lighter green hover */
 }
 
 @media (max-width: 768px) {
@@ -118,11 +142,16 @@ body {
     font-size: 1.2rem;
     padding: 1rem;
   }
+
+  .logo img {
+    max-height: 70px;
+  }
 }
 
 /* Footer */
 .site-footer {
   text-align: center;
   padding: 1rem;
-  background-color: rgba(0,0,0,0.05);
+  background-color: #064420; /* dark green footer */
+  color: #fff;               /* white text */
 }
