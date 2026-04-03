@@ -2,29 +2,125 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #fdfcf7;
-
-  /* Background image */
-  background-image: url("/Web-Background.PNG"); /* check exact filename and path */
-  background-repeat: no-repeat;
+  background: #fdfcf7 url("Web-Background.PNG") no-repeat center center;
   background-size: cover;
-  background-position: center;
   background-attachment: scroll; /* avoid fixed for mobile */
 
   color: #2e2e2e;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%; /* safer than 100vh on mobile */
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo {
+  max-height: 60px;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #2e2e2e;
+  margin: 4px 0;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav li {
+  margin: 0 1rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2e2e2e;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2e2e2e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.05);
 }
 
 /* Mobile-specific fallback */
 @media (max-width: 768px) {
   body {
-    /* Re-assert image to ensure visibility */
-    background-image: url("Web-Background.PNG");
-    background-repeat: no-repeat;
+    background: #fdfcf7 url("Web-Background.PNG") no-repeat top center;
     background-size: cover;
-    background-position: top center;
     background-attachment: scroll;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #fdfcf7;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    border: 1px solid #ccc;
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav li {
+    margin: 1rem 0;
   }
 }
