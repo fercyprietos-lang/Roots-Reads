@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #fdfcf7 url("Web-Background.PNG") no-repeat center center;
-  background-size: cover;          /* background fills screen */
+  background-size: cover;          /* fills the screen */
   background-attachment: fixed;    /* stays fixed while scrolling */
   color: #2e2e2e;
   display: flex;
@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: space-between;  /* logo left, hamburger right */
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 /* Logo styling */
@@ -26,7 +26,7 @@ body {
 }
 
 .logo img {
-  max-height: 60px;   /* consistent size */
+  max-height: 55px;   /* consistent size */
   width: auto;
   display: block;
 }
@@ -35,10 +35,11 @@ body {
 .hamburger {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   cursor: pointer;
   background: none;
   border: none;
-  z-index: 1001; /* stays above sidebar */
+  z-index: 1001;
 }
 
 .hamburger .bar {
@@ -53,20 +54,20 @@ body {
 .main-nav {
   position: fixed;
   top: 0;
-  left: -250px; /* hidden off-screen */
+  left: -250px;
   width: 250px;
   height: 100%;
   background-color: #fdfcf7;
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  padding-top: 70px; /* space for header */
+  padding-top: 70px;
   transition: left 0.3s ease;
   z-index: 1000;
 }
 
 .main-nav.active {
-  left: 0; /* slides in */
+  left: 0;
 }
 
 .main-nav ul {
@@ -87,63 +88,116 @@ body {
   font-size: 1.2rem;
 }
 
-/* Hero section */
-.hero {
-  text-align: center;
-  padding: 4rem 2rem;
+/* Collection Section */
+.collection {
+  padding: 2rem;
 }
 
-.hero h1 {
-  font-size: 2rem;
+.collection h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card h3 {
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
   margin-bottom: 1rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-/* Responsive Hero Button */
-.hero-btn {
+.card a {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   background-color: #2e2e2e;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.hero-btn:hover {
+.card a:hover {
   background-color: #444;
 }
 
-@media (max-width: 768px) {
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.05);
+  margin-top: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 820px) {
   body {
-    background-size: contain; /* background adjusts for smaller screens */
+    background-size: cover;       /* keep background filling screen */
+    background-position: top center;
   }
 
-  .hero-btn {
-    width: 80%;       /* button stretches on small screens */
-    font-size: 1.2rem;
-    padding: 1rem;
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .card img {
+    height: 160px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
   }
 
   .logo img {
-    max-height: 45px; /* smaller logo on tablets */
+    max-height: 40px; /* smaller logo on tablets */
   }
 }
 
 @media (max-width: 480px) {
-  .logo img {
-    max-height: 40px; /* compact logo on phones */
+  .grid {
+    grid-template-columns: 1fr; /* single column for very small screens */
   }
-}
 
-/* Footer */
-.site-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: rgba(0,0,0,0.05);
+  .card img {
+    max-height: 180px;
+  }
+
+  .logo img {
+    max-height: 35px; /* compact logo on phones */
+  }
 }
