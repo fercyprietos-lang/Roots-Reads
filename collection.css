@@ -2,135 +2,191 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #fdfcf7;
-  background-image: url("web\ bacground.png"); /* update path if needed */
-  background-repeat: no-repeat;
+  background: #fdfcf7 url("Web-Background.PNG") no-repeat center center;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: #2e2e2e;
-
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
-/* Header / Navigation */
-header {
+/* Header */
+.site-header, header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(59, 93, 59, 0.95); /* dark green */
-  padding: 0.75rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+  padding: 1rem;
 }
 
-header:hover {
-  background-color: rgba(59, 93, 59, 1);
-}
-
-header .logo {
+.logo {
+  max-height: 60px;
+  font-size: 1.5rem;
   font-weight: bold;
-  font-size: 1.2rem;
-  color: #fdfcf7; /* light text */
-  text-transform: uppercase;
 }
 
-header nav ul {
-  list-style: none;
+/* Hamburger button */
+.hamburger {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #2e2e2e;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Sidebar Navigation */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fdfcf7;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.main-nav.active {
+  left: 0;
+}
+
+.main-nav ul {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-header nav ul li a {
-  text-decoration: none;
-  color: #fdfcf7;
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+.main-nav li {
+  margin: 1rem 0;
+  text-align: left;
+  padding-left: 1rem;
 }
 
-header nav ul li a:hover {
-  color: #d9b382; /* light brown accent */
-  transform: translateY(-2px);
+.nav-link {
+  text-decoration: none;
+  color: #2e2e2e;
+  font-size: 1.2rem;
 }
 
 /* Collection Section */
 .collection {
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.85); /* overlay for readability */
-  border-radius: 12px;
-  margin: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .collection h2 {
-  margin-bottom: 1rem;
   text-align: center;
-  color: #3b5d3b; /* dark green heading */
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
 }
 
 /* Grid Layout */
 .grid-container,
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
 /* Card Styling */
 .card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #d9b382; /* light brown border */
-  border-radius: 8px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .card h3 {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #2e2e2e;
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: #4a3c2a; /* earthy brown text */
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
 .card a {
   display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  background: #3b5d3b; /* dark green button */
-  color: #fdfcf7;
+  padding: 0.5rem 1rem;
+  background-color: #2e2e2e;
+  color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .card a:hover {
-  background: #2e442e; /* darker green */
-  transform: translateY(-2px);
+  background-color: #444;
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 1rem;
-  background-color: rgba(59, 93, 59, 0.95); /* dark green */
-  color: #fdfcf7;
+  background-color: rgba(0,0,0,0.05);
   margin-top: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  body {
+    background-size: contain; /* background adjusts for smaller screens */
+  }
+
+  .hero-btn {
+    width: 80%;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  .grid-container,
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container,
+  .grid {
+    grid-template-columns: 1fr; /* single column for very small screens */
+  }
+
+  .card img {
+    max-height: 200px;
+    object-fit: cover;
+  }
 }
