@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: space-between;  /* logo left, hamburger right */
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 
 /* Logo styling */
@@ -26,7 +26,7 @@ body {
 }
 
 .logo img {
-  max-height: 50px;   /* consistent size */
+  max-height: 60px;   /* consistent size */
   width: auto;
   display: block;
 }
@@ -35,11 +35,10 @@ body {
 .hamburger {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   cursor: pointer;
   background: none;
   border: none;
-  z-index: 1001;
+  z-index: 1001; /* stays above sidebar */
 }
 
 .hamburger .bar {
@@ -54,20 +53,20 @@ body {
 .main-nav {
   position: fixed;
   top: 0;
-  left: -250px;
+  left: -250px; /* hidden off-screen */
   width: 250px;
   height: 100%;
   background-color: #fdfcf7;
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  padding-top: 70px;
+  padding-top: 70px; /* space for header */
   transition: left 0.3s ease;
   z-index: 1000;
 }
 
 .main-nav.active {
-  left: 0;
+  left: 0; /* slides in */
 }
 
 .main-nav ul {
@@ -88,115 +87,63 @@ body {
   font-size: 1.2rem;
 }
 
-/* Collection Section */
-.collection {
-  padding: 2rem;
-}
-
-.collection h2 {
+/* Hero section */
+.hero {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  padding: 4rem 2rem;
 }
 
-/* Grid Layout */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Card Styling */
-.card {
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  max-width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card h3 {
-  margin: 0.75rem 0;
-  font-size: 1.2rem;
-}
-
-.card p {
-  font-size: 0.95rem;
-  color: #555;
+.hero h1 {
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.card a {
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Hero Button */
+.hero-btn {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background-color: #2e2e2e;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.card a:hover {
+.hero-btn:hover {
   background-color: #444;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: rgba(0,0,0,0.05);
-  margin-top: auto;
-}
-
-/* Responsive tweaks */
 @media (max-width: 768px) {
   body {
     background-size: contain; /* background adjusts for smaller screens */
   }
 
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
-
-  .card img {
-    height: 160px;
-  }
-
-  .card h3 {
-    font-size: 1rem;
-  }
-
-  .card p {
-    font-size: 0.85rem;
+  .hero-btn {
+    width: 80%;       /* button stretches on small screens */
+    font-size: 1.2rem;
+    padding: 1rem;
   }
 
   .logo img {
-    max-height: 40px; /* smaller logo on tablets */
+    max-height: 45px; /* smaller logo on tablets */
   }
 }
 
 @media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr; /* single column for very small screens */
-  }
-
-  .card img {
-    max-height: 180px;
-  }
-
   .logo img {
-    max-height: 35px; /* compact logo on phones */
+    max-height: 40px; /* compact logo on phones */
   }
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.05);
 }
