@@ -5,7 +5,7 @@ body {
   background-color: #fdfcf7;
 
   /* Background image */
-  background-image: url("Web-Background.PNG"); /* check exact filename and path */
+  background-image: url("/Web-Background.PNG"); /* check exact filename and path */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
